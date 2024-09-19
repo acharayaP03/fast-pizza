@@ -1,11 +1,15 @@
 import { formatCurrency } from '../../utils/helpers';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart, getPizzaInCart } from '../cart/cartSlice';
+
 import Button from '../../ui/Buttton';
-import { useDispatch } from 'react-redux';
-import { addToCart } from '../cart/cartSlice';
+import DeleteItem from '../cart/DeleteItem';
 
 function MenuItem({ pizza }) {
-  const dispatch = useDispatch();
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
+  const pizzaExistInCart = useSelector(getPizzaInCart(id));
+
+  const dispatch = useDispatch();
 
   const soldOutClass = soldOut ? 'opacity-70 grayscale h-24' : 'h-24';
 
@@ -39,9 +43,10 @@ function MenuItem({ pizza }) {
               Sold out
             </p>
           )}
-          {!soldOut && (
+          {pizzaExistInCart && <DeleteItem pizzaId={id} />}
+
+          {!soldOut && !pizzaExistInCart && (
             <Button type="small" onClick={handleOnClick}>
-              {' '}
               add to cart
             </Button>
           )}
