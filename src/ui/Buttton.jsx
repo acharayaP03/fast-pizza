@@ -17,6 +17,14 @@ export default function Button({ children, ...props }) {
       </Link>
     );
   }
+
+  if (props.onClick) {
+    return (
+      <button onClick={props.onClick} className={className[props.type]}>
+        {children}
+      </button>
+    );
+  }
   return (
     <button {...props} className={className[props.type]}>
       {children}
