@@ -12,6 +12,7 @@ function MenuItem({ pizza }) {
   function handleOnClick(e) {
     e.preventDefault();
 
+    console.log('pizza', pizza);
     const newPizza = {
       pizzaId: id,
       name,
