@@ -47,6 +47,15 @@ function CreateOrder() {
 
       <Form method="POST">
         <input type="hidden" name="cart" value={JSON.stringify(cart)} />
+        <input
+          type="hidden"
+          name="position"
+          value={
+            position.longitude
+              ? `${position.latitude}, ${position.longitude}`
+              : ''
+          }
+        />
         <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
           <label className="sm:basis-40">First Name</label>
           <input
