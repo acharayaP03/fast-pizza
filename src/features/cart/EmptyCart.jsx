@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 import LinkButton from '../../ui/LinkButton';
 
 function EmptyCart() {

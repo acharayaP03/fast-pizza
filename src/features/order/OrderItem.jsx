@@ -15,7 +15,7 @@ function OrderItem({ item, isLoadingIngredients, ingredients }) {
         {' '}
         {isLoadingIngredients
           ? 'Loading ingredients...'
-          : ingredients.join(', ')}
+          : ingredients?.join(', ')}
       </p>
     </li>
   );
